@@ -1,0 +1,28 @@
+<html>
+    <body>
+        
+        <script>
+            function generateKey() {
+                // Get the current Unix time (milliseconds since January 1, 1970)
+                var day = Math.floor(Date.now() /86400000);
+                
+                console.log(day)
+
+                // Generate a random key based on the seed
+                let key = '';
+                for (let i = 0; i < 32; i++) {
+                    var seed = day % (i*64)+64
+
+                    const randomChar = (parseInt(seed, 10) + Math.floor(parseInt(seed, 10))) % 36;
+                    key += randomChar.toString(36);
+                }
+
+                return key.toUpperCase();
+            }
+
+            // Example usage
+            document.write("<p>"+generateKey()+"</p>")
+
+        </script>
+    </body>
+</html>
